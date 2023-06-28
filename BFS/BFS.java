@@ -15,12 +15,13 @@ public class BFS {
         this.graph = graph;
     }
 
-    public void performSearch(int sourceVertex) {
+    public List<Integer> performSearch(int sourceVertex) {
+        List<Integer> result = new ArrayList<>();
         visited.set(sourceVertex, true);
         queue.offer(sourceVertex);
         while (!queue.isEmpty()) {
             sourceVertex = queue.poll();
-            System.out.println("Processing vertex " + sourceVertex);
+            result.add(sourceVertex);
             for (int node : graph.getAdjacencyList().get(sourceVertex)) {
                 if (!visited.get(node)) {
                     visited.set(node, true);
@@ -28,5 +29,6 @@ public class BFS {
                 }
             }
         }
+        return result;
     }
 }
