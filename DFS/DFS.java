@@ -12,9 +12,8 @@ public class DFS {
     public DFS(Graph graph) {
         this.graph = graph;
         visited = new ArrayList<>(graph.getVerticesCount());
-        for (int i = 0; i < graph.getVerticesCount(); i++) {
+        for (int i = 0; i < graph.getVerticesCount(); i++)
             visited.add(false);
-        }
         stack = new Stack<>();
     }
 
@@ -27,7 +26,8 @@ public class DFS {
                 visited.set(node, true);
                 result.add(node);
                 for (int neighbour: graph.getAdjacencyList().get(node)) {
-                    stack.push(neighbour);
+                    if (!visited.get(neighbour))
+                        stack.push(neighbour);
                 }
             }
         }
